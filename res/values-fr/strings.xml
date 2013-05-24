@@ -16,7 +16,7 @@
     <string name="pref_name">Nom</string>
     <string name="pref_name_summary">Votre nom sur les étiquettes</string>
     <string name="pref_clipboard">Copié aux presse-papiers</string>
-    <string name="pref_clipboard_summary">Copié l'étiquette URL aux presse-papiers automatique</string>
+    <string name="pref_clipboard_summary">Copié l\'étiquette URL aux presse-papiers automatique</string>
 
     <!--Menu-->
     <string name="action_settings">Paramètres</string>
