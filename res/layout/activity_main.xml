@@ -49,9 +49,8 @@
         android:layout_marginTop="14dp"
         android:ems="10"
         android:inputType="textMultiLine"
-        android:layout_above="@+id/textView3"
         android:gravity="top"
-        />
+        android:layout_above="@+id/button1"/>
 
     <Button
         android:id="@+id/button1"
@@ -59,15 +58,17 @@
         android:layout_height="wrap_content"
         android:text="@string/paste_button"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"/>
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/paste_url_label"
-        android:layout_above="@+id/button1"
-        android:layout_alignLeft="@+id/editText2"/>
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/editText2"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textView4"
