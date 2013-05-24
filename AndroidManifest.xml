@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.teamblueridge.paste"
-    android:versionCode="2000"
-    android:versionName="2.0.0-alpha" android:installLocation="auto">
+    android:versionCode="2001"
+    android:versionName="2.0.0-alpha2" android:installLocation="auto">
     <!--versionCode = versionName+1zero for alpha/beta builds
     Ex: 2.0.0-alpha = 2000; 2.0.0-beta = 2001; 2.0.0-beta = 2003-->
 
