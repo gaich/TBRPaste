@@ -15,6 +15,8 @@
     <!--Preferences-->
     <string name="pref_name">Naam</string>
     <string name="pref_name_summary">Uw naam getoond in klevertjes</string>
+    <string name="pref_clipboard">Kopieer naar klembord</string>
+    <string name="pref_clipboard_summary">Kopieer de klever URL automatisch naar het klembord</string>
 
     <!--Menu-->
     <string name="action_settings">Instellingen</string>

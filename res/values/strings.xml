@@ -15,7 +15,7 @@
     <!--Preferences-->
     <string name="pref_name">Name</string>
     <string name="pref_name_summary">Your name to be shown on pastes</string>
-    <string name="pref_clipboard">Autocopy to Clipboard</string>
+    <string name="pref_clipboard">Copy to clipboard</string>
     <string name="pref_clipboard_summary">Automatically copy the paste URL to the clipboard</string>
 
     <!--Menu-->
