@@ -57,9 +57,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/paste_button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="22dp"/>
+        android:layout_above="@+id/textView4"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/textView3"
@@ -74,10 +73,9 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView3"
-        android:layout_alignBottom="@+id/textView3"
+        android:text="@string/paste_url"
+        android:layout_alignTop="@+id/textView3"
         android:layout_alignRight="@+id/editText2"
-        android:layout_toRightOf="@+id/textView1"
-        android:text="@string/paste_url" />
+        android:layout_toRightOf="@+id/textView1"/>
 
 </RelativeLayout>
