@@ -65,9 +65,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/paste_url_label"
+        android:textStyle="bold"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/editText2"
-        android:textStyle="bold"/>
+        android:layout_marginBottom="14dp"/>
 
     <TextView
         android:id="@+id/textView4"
