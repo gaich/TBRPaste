@@ -66,9 +66,13 @@ public class MainActivity extends Activity implements OnClickListener {
         pasteContentEditText = (EditText) findViewById(R.id.editText2);
         pasteContentString = pasteContentEditText.getText().toString();
 
-
-        //Execute paste upload in separate thread
-        new uploadPaste().execute();
+        //if paste content is not empty, upload, if not, just end with error in url label
+        if (!pasteContentString.isEmpty()) {
+           //Execute paste upload in separate thread
+            new uploadPaste().execute();
+        } else {
+            pasteUrlLabel.setText("Error: Missing paste text");
+        }
 
         //Clear out the old data in the paste
         pasteNameEditText.setText("");
@@ -130,63 +134,53 @@ public class MainActivity extends Activity implements OnClickListener {
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost("http://paste.teamblueridge.org/api/create");
             //if no paste content, do not even send to server
-            if (!pasteContentString.isEmpty()) {
-                try {
-                    // Add your data
-                    List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-                    nameValuePairs.add(new BasicNameValuePair("title", pasteNameString));
-                    nameValuePairs.add(new BasicNameValuePair("text", pasteContentString));
-                    nameValuePairs.add(new BasicNameValuePair("name", userName));
-                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            try {
+                // Add your data
+                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+                nameValuePairs.add(new BasicNameValuePair("title", pasteNameString));
+                nameValuePairs.add(new BasicNameValuePair("text", pasteContentString));
+                nameValuePairs.add(new BasicNameValuePair("name", userName));
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
-                    // Execute HTTP Post Request
-                    HttpResponse response = httpclient.execute(httppost);
-                    InputStream in = response.getEntity().getContent();
-                    StringBuilder stringbuilder = new StringBuilder();
-                    BufferedReader bfrd = new BufferedReader(new InputStreamReader(in), 1024);
-                    String line;
-                    while ((line = bfrd.readLine()) != null)
-                        stringbuilder.append(line);
-                    pasteUrlString = stringbuilder.toString();
-                } catch (ClientProtocolException e) {
-                    Log.d("TeamBlueridge", e.toString());
-                } catch (IOException e) {
-                    Log.d("TeamBlueridge", e.toString());
-                }
-                return null;
-            } else {
-                pasteUrlString = "Error: Missing paste text"; //Do not translate
-                return null;
+                // Execute HTTP Post Request
+                HttpResponse response = httpclient.execute(httppost);
+                InputStream in = response.getEntity().getContent();
+                StringBuilder stringbuilder = new StringBuilder();
+                BufferedReader bfrd = new BufferedReader(new InputStreamReader(in), 1024);
+                String line;
+                while ((line = bfrd.readLine()) != null)
+                    stringbuilder.append(line);
+                pasteUrlString = stringbuilder.toString();
+            } catch (ClientProtocolException e) {
+                Log.d("TeamBlueridge", e.toString());
+            } catch (IOException e) {
+                Log.d("TeamBlueridge", e.toString());
             }
+            return null;
         }
 
         //Since we used a dialog, we need to disable it
         protected void onPostExecute(String paste_url) {
             // dismiss the dialog after getting all products
             pDialog.dismiss();
+            //If, according to settings, paste URL should be copied to clipboard
+            if (prefs.getBoolean("pref_clipboard", true)) {
+                //Copy pasteUrl to clipboard
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("TBRPaste", pasteUrlString);
+                clipboard.setPrimaryClip(clip);
+            }
+
 
             // finally set the URL for the user
             runOnUiThread(new Runnable() {
                 public void run() {
                     //if pasteUrlString says no paste text, do not hyperlink & do not clipboard
-                    if (!pasteUrlString.equals("Error: Missing paste text")) {
-                        //Create a clickable link from pasteUrlString for user (opens in web browser)
-                        String linkText = "<a href=\"" + pasteUrlString + "\">" + pasteUrlString + "</a>";
-                        pasteUrlLabel.setText(Html.fromHtml(linkText));
-                        pasteUrlLabel.setMovementMethod(LinkMovementMethod.getInstance());
-                        //If paste URL should be copied to clipboard
-                        if (prefs.getBoolean("pref_clipboard", true)) {
-                            //Copy pasteUrl to clipboard
-                            ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-                            ClipData clip = ClipData.newPlainText("TBRPaste", pasteUrlString);
-                            clipboard.setPrimaryClip(clip);
-                        } else {
-
-                        }
-                    } else {
-                        pasteUrlLabel.setText(pasteUrlString);
-                    }
-                }
+                    //Create a clickable link from pasteUrlString for user (opens in web browser)
+                    String linkText = "<a href=\"" + pasteUrlString + "\">" + pasteUrlString + "</a>";
+                    pasteUrlLabel.setText(Html.fromHtml(linkText));
+                    pasteUrlLabel.setMovementMethod(LinkMovementMethod.getInstance());
+                 }
             });
 
         }
