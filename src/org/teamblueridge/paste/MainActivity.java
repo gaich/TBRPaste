@@ -71,7 +71,7 @@ public class MainActivity extends Activity implements OnClickListener {
            //Execute paste upload in separate thread
             new uploadPaste().execute();
         } else {
-            pasteUrlLabel.setText("Error: Missing paste text");
+            pasteUrlLabel.setText(R.string.paste_noText);
         }
 
         //Clear out the old data in the paste
@@ -175,7 +175,6 @@ public class MainActivity extends Activity implements OnClickListener {
             // finally set the URL for the user
             runOnUiThread(new Runnable() {
                 public void run() {
-                    //if pasteUrlString says no paste text, do not hyperlink & do not clipboard
                     //Create a clickable link from pasteUrlString for user (opens in web browser)
                     String linkText = "<a href=\"" + pasteUrlString + "\">" + pasteUrlString + "</a>";
                     pasteUrlLabel.setText(Html.fromHtml(linkText));
