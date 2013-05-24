@@ -6,4 +6,9 @@
         android:title="@string/pref_name"
         android:summary="@string/pref_name_summary"
         android:defaultValue="Mobile User"/>
+    <CheckBoxPreference
+        android:key="pref_clipboard"
+        android:title="@string/pref_clipboard"
+        android:summary="@string/pref_clipboard_summary"
+        android:defaultValue="true"/>
 </PreferenceScreen>

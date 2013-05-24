@@ -46,6 +46,7 @@ public class MainActivity extends Activity implements OnClickListener {
     String userName;
     String uploadingText;
     String toastText;
+    SharedPreferences prefs;
     // Progress Dialog
     private ProgressDialog pDialog;
 
@@ -65,6 +66,7 @@ public class MainActivity extends Activity implements OnClickListener {
         pasteContentEditText = (EditText) findViewById(R.id.editText2);
         pasteContentString = pasteContentEditText.getText().toString();
 
+
         //Execute paste upload in separate thread
         new uploadPaste().execute();
 
@@ -72,8 +74,8 @@ public class MainActivity extends Activity implements OnClickListener {
         pasteNameEditText.setText("");
         pasteContentEditText.setText("");
 
-        //Call toast as pasteUrl is being copied to the clipboard
-        if (!pasteContentString.isEmpty()) {
+        //Call toast as pasteUrl is being copied to the clipboard && if paste URL should be copied
+        if (!pasteContentString.isEmpty() && prefs.getBoolean("pref_clipboard", true)) {
             toastText = getResources().getString(R.string.paste_toast);
             Context context = getApplicationContext();
             CharSequence text = toastText;
@@ -84,7 +86,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
     public void onResume() {
         super.onResume();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if (!prefs.getString("pref_name", "").isEmpty()) {
             userName = prefs.getString("pref_name", "");
         } else {
@@ -172,11 +174,15 @@ public class MainActivity extends Activity implements OnClickListener {
                         String linkText = "<a href=\"" + pasteUrlString + "\">" + pasteUrlString + "</a>";
                         pasteUrlLabel.setText(Html.fromHtml(linkText));
                         pasteUrlLabel.setMovementMethod(LinkMovementMethod.getInstance());
+                        //If paste URL should be copied to clipboard
+                        if (prefs.getBoolean("pref_clipboard", true)) {
+                            //Copy pasteUrl to clipboard
+                            ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                            ClipData clip = ClipData.newPlainText("TBRPaste", pasteUrlString);
+                            clipboard.setPrimaryClip(clip);
+                        } else {
 
-                        //Copy pasteUrl to clipboard
-                        ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-                        ClipData clip = ClipData.newPlainText("TBRPaste", pasteUrlString);
-                        clipboard.setPrimaryClip(clip);
+                        }
                     } else {
                         pasteUrlLabel.setText(pasteUrlString);
                     }
