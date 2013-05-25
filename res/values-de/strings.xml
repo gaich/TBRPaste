@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Main UI-->
+    <string name="paste_name">Aufkleber Name:</string>
+    <string name="paste_content">Aufkleber Einhalt:</string>
+    <string name="paste_url_label">Aufkleber URL:</string>
+    <string name="paste_button">Sende</string>
+    <string name="paste_url"/>
+    <string name="paste_noText">Bitte fielen sie die text Felden aus</string>
+    <string name="paste_toast">Aufkleber URL ist kopiert aus klemmtafel.</string>
+    <string name="paste_upload">Uploaden. Einen Augenblick Geduld, bitte</string>
+
+    <!--Preferences-->
+    <string name="pref_name">Name</string>
+    <string name="pref_name_summary">Ihren name zu sehen in Aufklebers</string>
+    <string name="pref_clipboard">Kopieren auch Klemmtafel.</string>
+    <string name="pref_clipboard_summary">Kopiert das  Aufkleber URL automatisch auch Klemmtafel.</string>
+
+    <!--Menu-->
+    <string name="action_settings">Einstelligen</string>
+
+</resources>
