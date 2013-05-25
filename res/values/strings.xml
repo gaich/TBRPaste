@@ -11,7 +11,7 @@
     <string name="paste_url_label">Paste URL:</string>
     <string name="paste_button">Paste!</string>
     <string name="paste_url"/>
-    <string name="paste_noText">Error: Missing paste text</string>
+    <string name="paste_noText">Please fill in the text boxes</string>
     <string name="paste_toast">Paste URL has been copied to the clipboard.</string>
     <string name="paste_upload">Uploading paste. Please wait</string>
 

@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--App Name; DO NOT TRANSLATE-->
-    <string name="app_name">Team BlueRidge Paste</string>
-    <string name="app_name_short">TBR Paste</string>
-
     <!--Main UI-->
     <string name="paste_name">Klever Naam:</string>
     <string name="paste_content">Klever Inhoud:</string>
     <string name="paste_url_label">Klever URL:</string>
     <string name="paste_button">Verstuur</string>
     <string name="paste_url"/>
+    <string name="paste_noText">Vul de tekst velden in a.u.b.</string>
     <string name="paste_toast">Klever URL werd gekopieerd naar het klembord.</string>
     <string name="paste_upload">Uploaden. Even geduld a.u.b.</string>
 

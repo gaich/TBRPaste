@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--App Name; DO NOT TRANSLATE-->
-    <string name="app_name">Team BlueRidge Paste</string>
-    <string name="app_name_short">TBR Paste</string>
-
     <!--Main UI-->
     <string name="paste_name">Etiquette Nom:</string>
     <string name="paste_content">Etiquette Contenu:</string>
     <string name="paste_url_label">Etiquette URL:</string>
     <string name="paste_button">Envoye</string>
     <string name="paste_url"/>
+    <string name="paste_noText">Remplit les boxes de texte s.v.p.</string>
     <string name="paste_toast">Etiquette URL est copié aux presse-papiers.</string>
     <string name="paste_upload">Uploading. Attendez s.v.p.</string>
 
