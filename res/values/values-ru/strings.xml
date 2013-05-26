@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--App Name; DO NOT TRANSLATE-->
+    <string name="app_name">Team BlueRidge Paste</string>
+    <string name="app_name_short">TBR Paste</string>
+
+    <!--Main UI-->
+    <string name="paste_name">Имя вставки:</string>
+    <string name="paste_content">Содержание вставки:</string>
+    <string name="paste_url_label">URL вставки:</string>
+    <string name="paste_button">Вставить!</string>
+    <string name="paste_url"/>
+    <string name="paste_noText">Пожалуйста. заполните текстовые поля</string>
+    <string name="paste_toast">URL вставки скопирован в буфер обмена.</string>
+    <string name="paste_upload">Выгрузка вставки. Пожалуйста, подождите</string>
+
+    <!--Preferences-->
+    <string name="pref_name">Имя</string>
+    <string name="pref_name_summary">Ваше имя, отображаемое на вставках</string>
+    <string name="pref_clipboard">Скопировать в буфер обмена</string>
+    <string name="pref_clipboard_summary">Автоматически копировать URL вставки в буфер обмена</string>
+
+    <!--Menu-->
+    <string name="action_settings">Настройки</string>
+
+</resources>
